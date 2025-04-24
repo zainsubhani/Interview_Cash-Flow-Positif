@@ -68,7 +68,7 @@ project/
 3. Start the development server:
 
    ```
-   npm run dev or  nodemon index.js
+   npm run dev or  nodemon index.ts
    ```
 
    The server will run on port 3001 by default.
