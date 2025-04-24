@@ -2,7 +2,6 @@ import express from "express";
 import cors from "cors";
 import taskRoutes from "./routes/taskRoutes";
 const pathToSwaggerUi = require("swagger-ui-dist").absolutePath();
-import path from "path";
 
 const app = express();
 const PORT = process.env.PORT || 3001;
