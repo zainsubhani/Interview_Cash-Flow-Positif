@@ -70,15 +70,13 @@ project/
 3. Start the development server:
 
    ```
-   npm run dev
+   npm run dev or  nodemon index.js
    ```
 
    The server will run on port 3001 by default.
 
-4. Access API documentation:
-   Open your browser and navigate to:
    ```
-   http://localhost:3001/api-docs
+
    ```
 
 ### Frontend
@@ -98,7 +96,7 @@ project/
 3. Start the development server:
 
    ```
-   npm start
+   npm run dev
    ```
 
    The React app will run on port 3000 by default and automatically open in your browser.
@@ -112,17 +110,6 @@ project/
 - `DELETE /tasks/delete/:id` - Delete a task
 
 Detailed API documentation is available through Swagger UI at `/api-docs` when the server is running.
-
-## API Documentation
-
-The API is fully documented using OpenAPI (Swagger) specification. This provides:
-
-- Interactive documentation for all endpoints
-- Request/response schema examples
-- Ability to test API calls directly from the browser
-- Clear visibility of all data models and validation requirements
-
-To access the documentation, start the backend server and navigate to http://localhost:3001/api-docs.
 
 ## Testing with Postman
 
@@ -201,13 +188,10 @@ You can test the API using Postman by following these steps:
    cd frontend
    ```
 
-2. Run tests:
+2
 
-   ```
-   npm test
-   ```
+```
 
-   This will run component tests and API service tests.
 
 ## Technical Choices
 
@@ -222,8 +206,8 @@ You can test the API using Postman by following these steps:
 5. **Swagger Documentation**: Ensures the API is well-documented and easily understood by frontend developers or other consumers.
 
 6. **Testing Strategy**:
-   - Backend: Unit tests for service layer, integration tests for API endpoints
-   - Frontend: Component tests with React Testing Library, API service tests with mocked axios
+- Backend: Unit tests for service layer, integration tests for API endpoints
+- Frontend: Component tests with React Testing Library, API service tests with mocked axios
 
 ## Future Improvements
 
@@ -233,3 +217,4 @@ You can test the API using Postman by following these steps:
 - Improve UI/UX with better styling and animations
 - Add more advanced filtering and sorting options
 - Implement pagination for better performance with large lists
+```
