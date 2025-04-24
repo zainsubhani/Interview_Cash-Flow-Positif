@@ -63,7 +63,7 @@ router.patch("/update/:id", (req: Request, res: Response) => {
 });
 
 // DELETE /tasks/:id - Delete a task
-router.delete("/delete/:id", (req: Request, res: Response) => {
+router.delete("/:id", (req: Request, res: Response) => {
   const { id } = req.params;
   const deleted = taskService.deleteTask(id);
 

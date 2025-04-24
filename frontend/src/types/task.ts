@@ -7,8 +7,8 @@ export enum TaskStatus {
 
 // Make sure status is required in the schema (not optional)
 export const TaskSchema = z.object({
-  title: z.string().min(1, "Title is required"),
-  description: z.string().min(1, "Description is required"),
+  title: z.string().min(3, "Title is required minimum 3 char"),
+  description: z.string().min(10, " minimum 10 char Description is required"),
   status: z.nativeEnum(TaskStatus), // No .default() here to keep it required
 });
 
