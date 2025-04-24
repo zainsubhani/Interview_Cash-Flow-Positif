@@ -7,7 +7,7 @@ servers:
   - url: http://localhost:3001
     description: Development server
 paths:
-  /tasks:
+  /tasks/get:
     get:
       summary: Get all tasks
       description: Retrieves a list of all tasks
@@ -21,6 +21,7 @@ paths:
                 type: array
                 items:
                   $ref: "#/components/schemas/Task"
+  /tasks/create:
     post:
       summary: Create a new task
       description: Creates a new task with the provided data
@@ -74,6 +75,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Error"
+  /tasks/update/{id}:
     patch:
       summary: Update task status
       description: Updates the status of a specific task
@@ -115,6 +117,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Error"
+  /tasks/delete/{id}:
     delete:
       summary: Delete task
       description: Deletes a specific task by its ID

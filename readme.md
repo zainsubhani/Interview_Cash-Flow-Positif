@@ -5,6 +5,7 @@ A fullstack task management application built with TypeScript, Express (backend)
 ## Technical Stack
 
 ### Backend
+
 - Express.js
 - TypeScript
 - Zod (for validation)
@@ -13,6 +14,7 @@ A fullstack task management application built with TypeScript, Express (backend)
 - Swagger UI (for API documentation)
 
 ### Frontend
+
 - React
 - TypeScript
 - TanStack Query (React Query) for data fetching and caching
@@ -54,16 +56,19 @@ project/
 ### Backend
 
 1. Navigate to the backend directory:
+
    ```
    cd backend
    ```
 
 2. Install dependencies:
+
    ```
    npm install
    ```
 
 3. Start the development server:
+
    ```
    npm run dev
    ```
@@ -79,16 +84,19 @@ project/
 ### Frontend
 
 1. Navigate to the frontend directory:
+
    ```
    cd frontend
    ```
 
 2. Install dependencies:
+
    ```
    npm install
    ```
 
 3. Start the development server:
+
    ```
    npm start
    ```
@@ -97,11 +105,11 @@ project/
 
 ## API Endpoints
 
-- `GET /tasks` - Get all tasks
-- `POST /tasks` - Create a new task
+- `GET /tasks/get` - Get all tasks
+- `POST /tasks/create` - Create a new task
 - `GET /tasks/:id` - Get a task by ID
-- `PATCH /tasks/:id` - Update task status
-- `DELETE /tasks/:id` - Delete a task
+- `PATCH /tasks/update/:id` - Update task status
+- `DELETE /tasks/delete/:id` - Delete a task
 
 Detailed API documentation is available through Swagger UI at `/api-docs` when the server is running.
 
@@ -116,16 +124,69 @@ The API is fully documented using OpenAPI (Swagger) specification. This provides
 
 To access the documentation, start the backend server and navigate to http://localhost:3001/api-docs.
 
+## Testing with Postman
+
+You can test the API using Postman by following these steps:
+
+1. **Create a New Collection** in Postman named "Task Management API"
+
+2. **Set up requests for each endpoint**:
+
+   - **Get All Tasks**
+
+     - Method: GET
+     - URL: `http://localhost:3001/tasks/get`
+
+   - **Create Task**
+
+     - Method: POST
+     - URL: `http://localhost:3001/tasks/create`
+     - Body (JSON):
+       ```json
+       {
+         "title": "Test Task",
+         "description": "Task description",
+         "status": "pending"
+       }
+       ```
+
+   - **Get Task by ID**
+
+     - Method: GET
+     - URL: `http://localhost:3001/tasks/{id}`
+     - Replace `{id}` with an actual task ID
+
+   - **Update Task Status**
+
+     - Method: PATCH
+     - URL: `http://localhost:3001/tasks/update/{id}`
+     - Body (JSON):
+       ```json
+       {
+         "status": "done"
+       }
+       ```
+
+   - **Delete Task**
+     - Method: DELETE
+     - URL: `http://localhost:3001/tasks/delete/{id}`
+
+3. **Save and Organize** these requests in your collection for easy access.
+
+4. **Test Automation**: You can create test scripts in Postman to verify responses and automate your testing.
+
 ## Running Tests
 
 ### Backend Tests
 
 1. Navigate to the backend directory:
+
    ```
    cd backend
    ```
 
 2. Run tests:
+
    ```
    npm test
    ```
@@ -135,11 +196,13 @@ To access the documentation, start the backend server and navigate to http://loc
 ### Frontend Tests
 
 1. Navigate to the frontend directory:
+
    ```
    cd frontend
    ```
 
 2. Run tests:
+
    ```
    npm test
    ```
@@ -158,7 +221,7 @@ To access the documentation, start the backend server and navigate to http://loc
 
 5. **Swagger Documentation**: Ensures the API is well-documented and easily understood by frontend developers or other consumers.
 
-6. **Testing Strategy**: 
+6. **Testing Strategy**:
    - Backend: Unit tests for service layer, integration tests for API endpoints
    - Frontend: Component tests with React Testing Library, API service tests with mocked axios
 
