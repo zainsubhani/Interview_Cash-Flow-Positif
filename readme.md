@@ -11,7 +11,6 @@ A fullstack task management application built with TypeScript, Express (backend)
 - Zod (for validation)
 - UUID (for generating unique IDs)
 - CORS (for cross-origin resource sharing)
-- Swagger UI (for API documentation)
 
 ### Frontend
 
@@ -34,7 +33,6 @@ project/
 │   │   ├── __tests__/    # Test files
 │   │   ├── app.ts        # Express app setup
 │   │   └── index.ts      # Entry point
-│   ├── swagger.yaml      # Swagger API specification
 │   ├── package.json
 │   └── tsconfig.json
 │
