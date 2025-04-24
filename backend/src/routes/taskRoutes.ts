@@ -7,13 +7,13 @@ import { TaskSchema, TaskUpdateSchema } from "../types/task";
 const router = express.Router();
 
 // GET /tasks - Get all tasks
-router.get("/", (req: Request, res: Response) => {
+router.get("/get", (req: Request, res: Response) => {
   const tasks = taskService.getAllTasks();
   res.status(200).json(tasks);
 });
 
 // POST /tasks - Create a new task
-router.post("/", (req: Request, res: Response) => {
+router.post("/create", (req: Request, res: Response) => {
   try {
     const validatedData = TaskSchema.parse(req.body);
     const newTask = taskService.createTask(validatedData);
@@ -41,7 +41,7 @@ router.get("/:id", (req: Request, res: Response) => {
 });
 
 // PATCH /tasks/:id - Update task status
-router.patch("/:id", (req: Request, res: Response) => {
+router.patch("/update/:id", (req: Request, res: Response) => {
   try {
     const { id } = req.params;
     const validatedData = TaskUpdateSchema.parse(req.body);
@@ -63,7 +63,7 @@ router.patch("/:id", (req: Request, res: Response) => {
 });
 
 // DELETE /tasks/:id - Delete a task
-router.delete("/:id", (req: Request, res: Response) => {
+router.delete("/delete/:id", (req: Request, res: Response) => {
   const { id } = req.params;
   const deleted = taskService.deleteTask(id);
 
