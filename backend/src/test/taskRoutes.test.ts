@@ -146,7 +146,7 @@ describe("Task Routes", () => {
       const update = { status: TaskStatus.DONE };
 
       const response = await request(app)
-        .patch("/tasks/non-existent-id")
+        .patch("/tasks/update/${task.id}")
         .send(update);
 
       expect(response.status).toBe(404);
@@ -168,12 +168,14 @@ describe("Task Routes", () => {
       expect(response.status).toBe(204);
 
       // Verify task was deleted
-      const fetchResponse = await request(app).get(`/tasks/${task.id}`);
+      const fetchResponse = await request(app).get(`/tasks/delete/${task.id}`);
       expect(fetchResponse.status).toBe(404);
     });
 
     it("should return 404 for non-existent task", async () => {
-      const response = await request(app).delete("/tasks/non-existent-id");
+      const response = await request(app).delete(
+        "/tasks/delete/non-existent-id"
+      );
 
       expect(response.status).toBe(404);
       expect(response.body).toHaveProperty("error");
