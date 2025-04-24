@@ -1,4 +1,4 @@
-import request from "supertest";
+const request = require("supertest");
 import app from "../app";
 import { TaskStatus } from "../types/task";
 // Import taskService with a different name to avoid duplicate identifier
@@ -28,7 +28,7 @@ describe("Task Routes", () => {
         status: TaskStatus.DONE,
       });
 
-      const response = await request(app).get("/tasks");
+      const response = await request(app).get("/tasks/get");
 
       expect(response.status).toBe(200);
       expect(response.body).toHaveLength(2);
@@ -49,7 +49,7 @@ describe("Task Routes", () => {
         status: TaskStatus.PENDING,
       };
 
-      const response = await request(app).post("/tasks").send(newTask);
+      const response = await request(app).post("/tasks/create").send(newTask);
 
       expect(response.status).toBe(201);
       expect(response.body).toMatchObject(newTask);
@@ -62,7 +62,9 @@ describe("Task Routes", () => {
         description: "Invalid task with no title",
       };
 
-      const response = await request(app).post("/tasks").send(invalidTask);
+      const response = await request(app)
+        .post("/tasks/create")
+        .send(invalidTask);
 
       expect(response.status).toBe(400);
       expect(response.body).toHaveProperty("error");
@@ -109,7 +111,7 @@ describe("Task Routes", () => {
       const update = { status: TaskStatus.DONE };
 
       const response = await request(app)
-        .patch(`/tasks/${task.id}`)
+        .patch(`/tasks/update/${task.id}`)
         .send(update);
 
       expect(response.status).toBe(200);
@@ -133,7 +135,7 @@ describe("Task Routes", () => {
       const update = { status: "invalid-status" };
 
       const response = await request(app)
-        .patch(`/tasks/${task.id}`)
+        .patch(`/tasks/update/${task.id}`)
         .send(update);
 
       expect(response.status).toBe(400);
@@ -161,7 +163,7 @@ describe("Task Routes", () => {
         status: TaskStatus.PENDING,
       });
 
-      const response = await request(app).delete(`/tasks/${task.id}`);
+      const response = await request(app).delete(`/tasks/delete/${task.id}`);
 
       expect(response.status).toBe(204);
 
